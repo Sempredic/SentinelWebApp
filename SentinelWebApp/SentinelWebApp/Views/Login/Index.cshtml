@@ -1,0 +1,117 @@
+﻿@model SentinelWebApp.Models.LoginModel
+
+@section Styles
+{
+    <style type="text/css">
+        .form-container {
+            box-shadow: 0px 0px 10px 0px #000;
+            border-radius: 10px;
+            top: 15vh;
+            padding: 30px;
+            background: #fff;
+            width: 300px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .col-lg-12 {
+            background: #000;
+        }
+
+        .fill{
+            min-height:100%;
+            height:100%;
+            background-color:darkblue;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .fill-height {
+            min-height: 100%;
+            height: 100%;
+        }
+
+        .container-fluid {
+            background-color: lightblue;
+        }
+
+        .center-align {
+            display: flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        #loginForm{
+            margin-top: 20px;
+        }
+
+        #loginLabel{
+            margin-bottom:25px;
+        }
+
+        #logoRow {
+            background-color: white;
+            text-align: center;
+            height: 150px;
+            width: auto;
+            margin-top:50px;
+            margin-left:50px;
+            margin-right:50px;
+            background-image: url(../Assets/placeholder.com-logo1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            
+        }
+
+        .col4 {
+            width: 35%;
+            min-width: 400px;
+            min-height: calc(100% - 150px);
+            background: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #loginBg {
+            background-image: url(../Assets/maxresdefault.jpg);
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+    </style>
+}
+
+    <div class="container-fluid fill-height">
+        <div class="row fill-height">
+            <div id="loginBg"class="bg-danger fill-height"></div>
+            <div class="col4 bg-success fill-height center-align">
+                <div id="logoRow"></div>
+                <form class="form-container" id="loginForm" action="/Login/Authenticate" method="post">
+                    <label id="loginLabel">Log In</label>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.UserName)
+                        @Html.ValidationMessageFor(model => model.UserName)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Password)
+                    </div>
+                    <div class="editor-field">
+                        @Html.PasswordFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </div>

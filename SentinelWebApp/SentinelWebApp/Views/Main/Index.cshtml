@@ -1,0 +1,1273 @@
+﻿@model dynamic
+
+@section Styles
+{
+    <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/navbar-fixed-left.min.css" rel="stylesheet" />
+    <style type="text/css">
+        #wrapper {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 15rem;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background-color: gray;
+        }
+
+        .sidebar-list {
+            width: 30rem;
+            min-height: 100vh;
+            margin-left: 30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .bg-gradient-primary {
+            background-color: #4e73df;
+            background-image: linear-gradient(180deg,#4e73df 10%,#224abe);
+            background-size: cover;
+        }
+
+        .p-0 {
+            padding: 0 !important;
+        }
+
+        .align-items-start {
+            align-items: flex-start !important;
+        }
+
+        .navbar {
+            padding: .5rem 1rem;
+        }
+
+        article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+            display: block;
+        }
+
+        #wrapper #content-wrapper {
+            background-color: #f8f9fc;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .flex-column {
+            flex-direction: column !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .d-sm-flex {
+            background-color: gainsboro;
+        }
+
+        #wrapper #content-wrapper #content {
+            flex: 1 0 auto;
+        }
+
+        .topbar {
+            height: 4.375rem;
+        }
+
+        .mb-4, .my-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        .banner-col {
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 20px;
+            height: 100px;
+            background-color: white;
+            width: 100vh%;
+        }
+
+        .banner-col-full {
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 20px;
+            min-height: 100vh;
+            background-color: white;
+            width: 100vh%;
+            margin-bottom: 20px;
+        }
+
+        .banner-col-full-gray {
+            margin-top: 20px;
+            margin-left: 10px;
+            margin-right: 20px;
+            min-height: 100vh;
+            width: 100vh%;
+            margin-bottom: 20px;
+        }
+
+        .shadow {
+            box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15) !important;
+        }
+
+        .bg-white {
+            background-color: #fff !important;
+        }
+
+        .container-fluid {
+            width: auto;
+            padding-right: .75rem;
+            padding-left: .75rem;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .container, .container-fluid {
+        }
+
+        .cf-white {
+            background-color: white;
+            height: 400px;
+            flex-direction: column;
+            width: 245px;
+            padding: 10px;
+            margin-top: 150px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .cf-basic-row-100 {
+            background-color: white;
+            height: 100px;
+            width: 915px;
+            padding: 20px;
+            margin-top: 10px;
+            margin-left: 27px;
+            margin-right: 50px;
+            margin-bottom: 27px;
+        }
+
+        .cf-basic-row-500 {
+            background-color: white;
+            height: 500px;
+            flex-direction: row;
+            width: 915px;
+            padding: 20px;
+            margin-top: 10px;
+            margin-left: 27px;
+            margin-right: 5px;
+            margin-bottom: 27px;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .justify-content-between {
+            justify-content: space-between !important;
+        }
+
+        #areaButton {
+            margin-top: 50px;
+        }
+
+        .tabs {
+            margin-top: 100px;
+        }
+
+        .div-disabled {
+            pointer-events: none;
+            /* for "disabled" effect */
+            opacity: 0.5;
+            background: #CCC;
+        }
+
+        .div-enabled {
+            pointer-events: all;
+            /* for "disabled" effect */
+            opacity: 0;
+            background: none;
+        }
+
+        .redLabel {
+            color: red;
+        }
+
+        .redBg {
+            background-color: red;
+        }
+
+        .greenBg {
+            background-color: lawngreen;
+        }
+
+        #serialAddedHeader ul li {
+            display: inline;
+            list-style-type: none;
+            padding-right: 20px;
+        }
+
+        .hoverable:hover {
+            background-color: lightblue;
+        }
+
+        .double-clickable {
+        }
+
+        .ui-dialog-osx {
+            -moz-border-radius: 0 0 8px 8px;
+            -webkit-border-radius: 0 0 8px 8px;
+            border-radius: 0 0 8px 8px;
+            border-width: 0 8px 8px 8px;
+        }
+
+        #serial-exists-list-label {
+            margin-bottom: 10px;
+        }
+
+        #msg {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 2em;
+            color: red;
+        }
+
+
+        #nav-title {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            height: 50px;
+            width: auto;
+            background-image: url(../Assets/placeholder.com-logo1.jpg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #ulList {
+            margin-top: 100px;
+        }
+    </style>
+}
+
+
+
+@section MyScripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var isDisplay;
+
+
+            $('#serialInfoInput').keypress(function (e) {
+
+                if (e.which == 13) {
+
+                    if ($('#serialInfoInput').val() != null) {
+
+                        $('#serialInfoTable').find('tbody').empty();
+                        var list = new Array();
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/Main/GetSerialInfo",
+                            data: {
+                                serialID: $('#serialInfoInput').val()
+                            },
+                            success: function (data) {
+
+                                if (data.length > 0) {
+                                    $.each(data, function (index, element) {
+
+                                        //The HTML of the TR row that we want to add to our table.
+                                        var newTableRow = '<tr><td>' + element['Location'] + '</td>' +
+                                            '<td>' + element['Date'] + '</td>' +
+                                            '<td>' + element['CaseID'] + '</td>' +
+                                            '<td>' + element['Location'] + '</td>' +
+                                            '<td>' + element['UserID'] + '</td>' +
+                                            '<td>' + element['Time'] + '</td>' +
+                                            '<td>' + element['LastLoc'] + '</td></tr >';
+
+                                        //Add the HTML after the last row by using tr:last.
+                                        $('#serialInfoTable').find('tbody').append(newTableRow);
+                                    });
+                                } else {
+                                    alert("No Serial Found");
+                                }
+
+
+                            },
+                            error: function (response) {
+                                alert('eror');
+                            }
+                        });
+                    }
+                }
+            });
+
+            $('#serial-added-list').on('dblclick', 'li', function () {
+
+                var callbacks = $.Callbacks();
+                callbacks.add(RemoveSerial);
+
+                var ef = $(this);
+
+                ConfirmDialog('Are you sure', callbacks, ef);
+
+            });
+
+            $('#areaButton').change(function () {
+
+                var value = $('#areaButton').find(":selected").text();
+                isDisplay = true;
+            });
+
+            $('#areaButton').click(function () {
+
+
+                if (isDisplay == null) {
+                    isDisplay = false;
+                }
+
+                if (isDisplay == false) {
+
+                    $(this).children('option:not(:first)').remove();
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/Main/GetShit",
+                        data: { id: "Areas" },
+                        success: function (data) {
+
+                            $.each(data, function (index, element) {
+                                /*
+                                $('#areaButton').append(`<option value="${element['areaName']}">
+                                                       ${element['areaName']}
+                                                  </option>`);
+                                                  */
+
+                                $("<option></option>", {
+                                    value: element['areaName'],
+                                    text: element['areaName']
+                                }).appendTo($('#areaButton'));
+
+                            });
+
+                        },
+                        error: function (response) {
+                            alert('eror');
+                        }
+                    });
+
+                }
+
+                isDisplay = false;
+                /*
+                var listItems = $("#serialHeaderList li");
+                listItems.each(function (idx, li) {
+                    var product = $(li).text();
+                    //alert(product);
+                    // and the rest of your code
+                });
+                */
+
+            });
+
+            $('#locNameInput').keypress(function (e) {
+                if (e.which == 13) {
+
+
+                    if ($('#areaButton').val() != null) {
+                        var value = $('#areaButton').find(":selected").text().trim();
+
+                        var result = $.ajax({
+                            type: "POST",
+                            url: "/Main/VerifyLocation",
+                            data: {
+                                areaName: value,
+                                locName: $('#locNameInput').val()
+                            },
+                            async: false,
+                            dataType: 'json',
+                            success: function (data) {
+
+                            },
+                            error: function (response) {
+                                $("#locNameError").empty();
+                                $("#locNameError").append(JSON.stringify(response));
+                            }
+                        }).responseJSON;
+
+                        result = JSON.stringify(result);
+
+                        if (result == "true") {
+                            $("#locNameError").empty();
+                            DisableField($('#locNameInput'));
+                            EnableField($('#caseIDInput'));
+                            $('#caseIDInput').focus();
+                        } else {
+                            $("#locNameError").empty();
+                            $("#locNameError").append("Location doesn't exists in " + $('#areaButton').val());
+                            $('#locNameInput').select();
+                        }
+                    } else {
+                        alert("NO AREA SELECTED");
+                    }
+
+                }
+            });
+
+            $('#caseIDInput').keypress(function (e) {
+                if (e.which == 13) {
+
+                    var activeTab = $('ul#vcTabs').find('li.active').data('shit');
+
+                    if ($('#caseIDInput').val().toUpperCase() == "CLEAR") {
+                        $('#caseIDInput').val("");
+                        $('#locNameInput').val("");
+                        EnableField($('#locNameInput'));
+                        DisableField($('#caseIDInput'));
+                        $('#locNameInput').focus();
+                    } else {
+
+                        if (activeTab == "verifyTab") {
+
+                            var result = $.ajax({
+                                type: "POST",
+                                url: "/Main/VerifyCaseExists",
+                                data: {
+                                    caseID: $('#caseIDInput').val().trim()
+                                },
+                                async: false,
+                                dataType: 'json',
+                                success: function (data) {
+
+                                },
+                                error: function (response) {
+                                    $("#caseIDError").empty();
+                                    $("#caseIDError").append(JSON.stringify(response));
+                                }
+                            }).responseJSON;
+
+                            result = JSON.stringify(result);
+
+                            if (result == "true") {
+
+                                $("#caseIDError").empty();
+                                DisableField($('#caseIDInput'));
+                                EnableField($('#serialIDInput'));
+                                $('#serialIDInput').focus();
+
+                                PopulateSerialLists($('#caseIDInput').val());
+
+                            } else {
+
+                                $("#caseIDError").empty();
+                                $("#caseIDError").append($('#caseIDInput').val() + " doesn't exist.");
+                                $('#caseIDInput').select();
+                            }
+
+                        } else {
+                            //move to next field
+                            $("#caseIDError").empty();
+                            DisableField($('#caseIDInput'));
+                            EnableField($('#serialIDInput'));
+                            $('#serialIDInput').focus();
+
+                            PopulateSerialLists($('#caseIDInput').val());
+                        }
+
+                    }
+                }
+            });
+
+            $('ul#vcTabs').find('li').click(function () {
+                //clear fields
+                $('#serialIDInput').val("");
+                $('#caseIDInput').val("");
+                $('#locNameInput').val("");
+                //disable fields
+                DisableField($('#caseIDInput'));
+                DisableField($('#serialIDInput'));
+                //reenable fields
+                EnableField($('#locNameInput'));
+                //focus
+                $('#locNameInput').focus();
+
+                ClearSerialLists();
+            });
+
+
+            $('#serialIDInput').keypress(function (e) {
+                if (e.which == 13) {
+
+                    var activeTab = $('ul#vcTabs').find('li.active').data('shit');
+
+                    if ($('#serialIDInput').val().toUpperCase() == "CLEAR") {
+
+                        //clear fields
+                        $('#serialIDInput').val("");
+                        $('#caseIDInput').val("");
+                        $('#locNameInput').val("");
+                        //disable fields
+                        DisableField($('#caseIDInput'));
+                        DisableField($('#serialIDInput'));
+                        //reenable fields
+                        EnableField($('#locNameInput'));
+                        //focus
+                        $('#locNameInput').focus();
+
+                        ClearSerialLists();
+
+                    } else if ($('#serialIDInput').val().toUpperCase() == "RESETCASE") {
+
+                        $('#serialIDInput').val("");
+                        ClearSerialLists();
+                        //Repopulate serial list
+
+                    } else if ($('#serialIDInput').val().toUpperCase() == "VALIDATE") {
+
+                        if (activeTab == "verifyTab") {
+                            if ($('#areaButton').val() != null) {
+
+                                var list = new Array();
+
+                                $('#serial-added-list li').each(function (idx, li) {
+                                    list.push($(li).text().trim());
+                                });
+
+                                if (list.length > 0) {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Main/ValidateCase",
+                                        data: {
+                                            areaName: $('#areaButton').val(),
+                                            locName: $('#locNameInput').val(),
+                                            caseID: $('#caseIDInput').val(),
+                                            serialList: list
+                                        },
+                                        success: function (data) {
+
+                                            alert("Success");
+
+                                        },
+                                        error: function (response) {
+                                            alert('eror');
+                                        }
+                                    });
+
+                                    //clear fields
+                                    $('#serialIDInput').val("");
+                                    $('#caseIDInput').val("");
+                                    //disable fields
+                                    DisableField($('#serialIDInput'));
+                                    //reenable fields
+                                    EnableField($('#caseIDInput'));
+                                    //focus
+                                    $('#caseIDInput').focus();
+
+                                    ClearSerialLists();
+
+                                } else {
+                                    alert("EMPTY SERIAL LIST")
+                                    $('#serialIDInput').val("");
+                                }
+
+                            } else {
+                                alert("NO AREA SELECTED");
+
+                            }
+                        }
+                        else {
+                            alert("Verify Tab Only");
+                            $('#serialIDInput').val("");
+                        }
+
+                    } else {
+
+                        if (activeTab == "checkInTab") {
+
+                            ///check if serial exists in added list
+                            ///if false
+                            if (!CompareAddSerial($('#serialIDInput').val())) {
+
+                                if ($('#serialIDInput').val().length > 0) {
+
+                                    if (!CompareExistsSerial($('#serialIDInput').val())) {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "/Main/CheckInCase",
+                                            data: {
+                                                areaName: $('#areaButton').val(),
+                                                locName: $('#locNameInput').val(),
+                                                caseID: $('#caseIDInput').val(),
+                                                serialID: $('#serialIDInput').val()
+                                            },
+                                            success: function (data) {
+
+                                                PopulateSerialLists($('#caseIDInput').val());
+
+                                                $('#serial-added-list').append(`<li class="list-group-item hoverable double-clickable">
+                                                                           ${ $('#serialIDInput').val()}
+                                                                      </li>`);
+
+
+                                                $('#addedItem').text($('#serial-added-list').children().length);
+
+                                                $('#serialIDInput').val("");
+                                            },
+                                            error: function (response) {
+                                                alert('eror');
+                                                $('#serialIDInput').val("");
+                                            }
+                                        });
+
+                                    } else {
+                                        alert("Serial Already Exists");
+                                        $('#serialIDInput').select();
+                                    }
+
+                                }
+                                else {
+                                    alert("Serial Field Empty");
+                                }
+
+                            } else {
+                                $('#serialIDInput').val("");
+                            }
+
+
+                        } else {
+                            if (!CompareAddSerial($('#serialIDInput').val())) {
+                                $('#serial-added-list').append(`<li class="list-group-item hoverable double-clickable">
+                                                                           ${ $('#serialIDInput').val()}
+                                                                      </li>`);
+
+
+                                $('#addedItem').text($('#serial-added-list').children().length);
+
+                                CompareSerials($('#serialIDInput').val());
+                                $('#serialIDInput').val("");
+                            } else {
+                                $('#serialIDInput').val("");
+                            }
+                        }
+
+
+                    }
+                }
+            });
+
+            $('#msg').hide();
+
+        });
+
+
+        function ConfirmDialog(message, callback, val) {
+            $('<div></div>').appendTo('body')
+                .html('<div><h6>' + message + '?</h6></div>')
+                .dialog({
+                    modal: true,
+                    title: 'Confirm',
+                    zIndex: 10000,
+                    autoOpen: true,
+                    width: 'auto',
+                    resizable: false,
+                    buttons: {
+                        Yes: function () {
+                            // $(obj).removeAttr('onclick');
+                            // $(obj).parents('.Parent').remove();
+                            callback.fire(val);
+                            callback.empty();
+                            $(this).dialog("close");
+
+                        },
+                        No: function () {
+                            callback.empty();
+                            $(this).dialog("close");
+
+                        }
+                    },
+                    close: function (event, ui) {
+                        $(this).remove();
+                    }
+                });
+        };
+
+        function DialogCallback(value) {
+            return value;
+        }
+
+        function RemoveSerial(s) {
+
+            var activeTab = $('ul#vcTabs').find('li.active').data('shit');
+            var arr = [];
+
+            if (activeTab == "verifyTab") {
+
+                $.each($('#serial-exists-list li'), function (i, v) {
+                    var temp = $(v).text().trim();
+                    arr.push(temp);
+
+                    if ($(s).text().trim() == $(v).text().trim()) {
+
+                        $(v).removeClass("greenBg");
+
+                    }
+                });
+
+                $('#serial-exists-list').find('#errorItem').remove();
+
+                $(s).remove();
+
+                $('#addedItem').text($('#serial-added-list').children().length);
+            } else {
+
+                var result = $.ajax({
+                    type: "POST",
+                    url: "/Main/RemoveSerial",
+                    data: {
+                        serialID: $(s).text().trim()
+                    },
+                    async: false,
+                    dataType: 'json',
+                    success: function (data) {
+
+                        alert("Success");
+
+                    },
+                    error: function (response) {
+                        alert('eror');
+                    }
+                }).responseJSON;
+
+                result = JSON.stringify(result);
+
+                alert(result);
+
+                if (result == "true") {
+                    $(s).remove();
+
+                    PopulateSerialLists($('#caseIDInput').val());
+
+
+                }
+
+            }
+
+
+        }
+
+        function CompareAddSerial(s) {
+
+            var exists = false;
+
+            $.each($('#serial-added-list li'), function (i, v) {
+                var temp = $(v).text().trim();
+
+                if (s == $(v).text().trim()) {
+
+                    exists = true;
+                }
+            });
+
+            return exists;
+        }
+
+        function CompareExistsSerial(s) {
+            var exists = false;
+
+            $.each($('#serial-exists-list li'), function (i, v) {
+                var temp = $(v).text().trim();
+
+                if (s == $(v).text().trim()) {
+
+                    exists = true;
+                }
+            });
+
+            return exists;
+        }
+
+        function CompareSerials(s) {
+            var arr = [];
+
+            $.each($('#serial-exists-list li'), function (i, v) {
+                var temp = $(v).text().trim();
+                arr.push(temp);
+
+                if (s == $(v).text().trim()) {
+
+                    $(v).addClass("greenBg");
+
+                    $('#serial-exists-list').find('#errorItem').remove();
+                }
+            });
+
+            if (jQuery.inArray(s, arr) == -1) {
+
+                var num = parseInt($('#totalItem').text());
+
+                if (!isNaN(num)) {
+
+                    if ($('#serial-exists-list').children().length > num) {
+                        $('#errorItem').replaceWith(`<li id="errorItem" class="list-group-item redBg">
+                                                                        ${s} NOT IN CASE
+                                                                    </li>`);
+                    } else {
+                        $('#serial-exists-list').append(`<li id="errorItem" class="list-group-item redBg">
+                                                                        ${s}
+                                                                    </li>`);
+                    }
+
+                }
+
+            }
+        }
+
+        function StringToNumeral(t) {
+
+        }
+
+        function PopulateSerialLists(c) {
+
+            var result = $.ajax({
+                type: "POST",
+                url: "/Main/GetCaseSerials",
+                data: {
+                    caseID: c
+                },
+                success: function (data) {
+
+                },
+                async: false,
+                dataType: 'json',
+                error: function (response) {
+                    $("#caseIDError").empty();
+                    $("#caseIDError").append(JSON.stringify(response));
+                }
+            }).responseJSON;
+
+            if (result.isEmpty) {
+                alert("SHIT");
+            } else {
+
+                $('#serial-exists-list').empty();
+
+                $.each(result, function (i, v) {
+                    $('#serial-exists-list').append(`<li class="list-group-item">
+                                                                        ${ v['serial']}
+                                                                    </li>`);
+                });
+
+                $('#addedItem').text("0");
+                $('#totalItem').text(result.length);
+            }
+
+        }
+
+        function ClearSerialLists() {
+
+            $('#serial-added-list').empty();
+            $('#serial-exists-list').empty();
+
+            $('#addedItem').text("0");
+            $('#totalItem').text("0");
+        }
+
+        function DisableField(field) {
+            field.attr("disabled", "disabled");
+        }
+
+        function EnableField(field) {
+            field.removeAttr("disabled");
+        }
+
+        function fuck() {
+            $.ajax({
+                type: "GET",
+                url: "/Main/GetShit",
+                data: { id: "Areas" },
+                success: function (result) {
+
+                    return JSON.stringify(result);
+                },
+                error: function (response) {
+                    alert('eror');
+                }
+            });
+        }
+
+
+        function CheckVVFields() {
+            var isEmpty;
+
+            if ($('#locNameInput').val) {
+                isEmpty = true;
+            }
+
+            if ($('#caseIDInput').val) {
+                isEmpty = true;
+            }
+
+            if ($('#serialIDInput').val) {
+                isEmpty = true;
+            }
+
+            return isEmpty;
+        }
+
+        ///////////////////EVENTS///////////////
+        function ShowSACtxMenu(ev) {
+            ev.preventDefault();
+
+        }
+
+
+
+    </script>
+
+
+}
+
+
+
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left">
+    <div id="nav-title"><a></a></div>
+    <div id="ulList">
+        <ul class="list-group list-group-flush">
+            <li><a data-toggle="tab" href="#homeBody" class="nav list-group-item list-group-item-action bg-light">Dashboard</a></li>
+            <li><a data-toggle="tab" href="#routingBody" class="nav list-group-item list-group-item-action bg-light">Settings</a></li>
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle nav list-group-item list-group-item-action bg-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Apps</span> <span class="caret"></span></a>
+                <ul class="dropdown-menu ">
+                    <li><a data-toggle="tab" href="#sentinelBody" class="list-group-item list-group-item-action bg-light">Sentinel</a></li>
+                    <li><a data-toggle="tab" href="#outboundBody" class="list-group-item list-group-item-action bg-light">Outbound</a></li>
+                    <li><a data-toggle="tab" href="#routingBody" class="list-group-item list-group-item-action bg-light">Routing</a></li>
+                    <li><a data-toggle="tab" href="#routingBody" class="list-group-item list-group-item-action bg-light">Wholesale</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+
+</nav>
+
+
+
+<div class="container-fluid">
+
+    <div id="content" class="jumbotron">
+
+        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+            <h5><b>APPS</b></h5>
+        </div>
+
+        <div class="tab-content">
+            <div id="sentinelBody" class="tab-pane fade in active">
+                <div class="d-sm-flex mb-4">
+                    <div class="nav nav-tabs">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Validate</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Tools</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Serial Info</a></li>
+                            <li><a data-toggle="tab" href="#menu3">Age Report</a></li>
+                            <li><a data-toggle="tab" href="#sentinelSettingMI">Settings</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="container-fluid d-flex">
+                                <div class="row">
+                                    <div class="col-lg-4 banner-col-full-gray">
+                                        <div class="dropdown">
+
+                                            <select id="areaButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                                <option value="" selected disabled>Select Area</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-sm-flex justify-content-between align-items-center mb-4 tabs">
+                                            <ul id="vcTabs" class="nav nav-tabs">
+                                                <li class="active" data-shit="verifyTab"><a id="verifyTab" data-toggle="tab" href="#verify">Verify</a></li>
+                                                <li data-shit="checkInTab"><a id="checkInTab" data-toggle="tab" href="#checkin">CheckIn</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in active">
+                                                <div class=" container">
+                                                    Verify
+                                                    <div class="form-group">
+                                                        <label for="locNameInput">Location</label>
+                                                        <input tytext" class="form-control" id="locNameInput" autofocus>
+                                                        <label id="locNameError" class="redLabel "></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="caseIDInput">CaseID:</label>
+                                                        <input type="text" class="form-control" id="caseIDInput" disabled>
+                                                        <label id="caseIDError" class="redLabel "></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="serialIDInput">Serial:</label>
+                                                        <input type="text" class="form-control" id="serialIDInput" disabled>
+                                                        <label id="serialIDError" class="redLabel "></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 cf-white">
+                                        <div class="container-fluid">
+                                            <div id="serialAddedHeader">
+                                                <ul id="serialHeaderList">
+                                                    <li id="addedItem">0</li>
+                                                    <li> / </li>
+                                                    <li id="totalItem">0</li>
+                                                </ul>
+                                            </div>
+                                            <div class="row pre-scrollable">
+                                                <ul id="serial-added-list" class="list-group"></ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 cf-white">
+                                        <div class="container-fluid">
+                                            <div id="serial-exists-list-label">SerialsCase</div>
+                                            <div class="row pre-scrollable">
+                                                <ul id="serial-exists-list" class="list-group"></ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Menu </h3>
+
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-12 cf-basic-row-100">
+                                        <div class="form-group">
+                                            <label for="serialInfoInput">Name:</label>
+                                            <input type="text" class="form-control" id="serialInfoInput">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 cf-basic-row-500 ">
+
+                                        <div class="pre-scrollable">
+
+                                            <table id="serialInfoTable" class="table table-bordered ">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Date</th>
+                                                        <th>Case</th>
+                                                        <th>Location</th>
+                                                        <th>UserID</th>
+                                                        <th>Time</th>
+                                                        <th>CurLocation</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <div class="container-fluid">
+                                <div class="row d-flex">
+                                    <div class="sidebar-list bg-white">
+                                        <div class="list-group-flush">
+                                            <div class="list-group-item">
+                                                <p class="mb-0"><i class="far fa-image fa-2x mr-4 grey p-3 white-text rounded-le " aria-hidden="true"></i>Photos</p>
+                                            </div>
+                                            <div class="list-group-item">
+                                                <p class="mb-0"> <i class="fas fa-briefcase fa-2x mr-4 mr-4 grey p-3 white-text rounded-le" aria-hidden="true"></i>Work</p>
+                                            </div>
+                                            <div class="listup-item">
+                                                <p class="mb-0"><i class="fas fa-anchor fa-2x mr-4 mr-4 grey p-3 white-texunded-circle" aria-hidden="true"></i>Vacation</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row banner-col">asdfsad</div>
+
+                                        <div class="row banner-col-full pre-scrollable">
+                                            <table class="table table-bordered">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID<
+                                                        <th>Date</th>
+                                                        <th>Case</th>
+                                                        <th>Location</th>
+                                                        <th>UserID</th>
+                                                        <th>Time</th>
+                                                        <th>CurLocation</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>Date</td>
+                                                        <td>Case</td>
+                                                        <td>Location</td>
+                                                        <td>UserID</td>
+                                                        <td>Time</td>
+                                                        <td>CurLocation</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="routingBody" class="tab-pane fade in active">
+                <div class="d-sm-flex col-lg-12 mb-4">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
